@@ -8,7 +8,7 @@ title:               Training Course on Next generation sequencing
 tagline:             Training Course on Next generation sequencing
 description:         NGS base training
 url:                 'https://bioinfo-dirty-jobs.github.io/Thebasics/'
-baseurl:             ''
+baseurl:             'Thebasics/'
 twitter_username:
 github_username:  bioinfo-dirty-jobs
 pages_url: https://bioinfo-dirty-jobs.github.io/Thebasics
