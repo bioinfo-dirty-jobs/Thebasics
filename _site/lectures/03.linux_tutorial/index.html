@@ -1,0 +1,246 @@
+<h2 id="introduction">Introduction</h2>
+
+<p>Linux is the best-known and most-used open source operating system. As an operating system, Linux is software that sits underneath all of the other software on a computer, receiving requests from those programs and relaying these requests to the computer’s hardware.</p>
+
+<ul>
+  <li>GNU/Linux is a free and open-source operating system developed by thousands of contributors and led by Linus Torvalds since the beginning in 1991 Linux shells (commonly Bash)</li>
+  <li>allow users to execute more than 200 commands and to write pipelines in the Shell Script programming language to automatize tasks</li>
+  <li>Linux is widely used in research and super computers, more than 96% of super computers use Linux:</li>
+  <li>http://www.top500.org/statistics/list It’s an essential tool for bioinformatics and big data analysis and research</li>
+</ul>
+
+<h1 id="how-does-linux-differ-from-other-operating-systems">How does Linux differ from other operating systems?</h1>
+
+<p>In many ways, Linux is similar to other operating systems you may have used before, such as Windows, OS X, or iOS. Like other operating systems, Linux has a graphical interface, and types of software you are accustomed to using on other operating systems, such as word processing applications, have Linux equivalents. In many cases, the software’s creator may have made a Linux version of the same program you use on other systems. If you can use a computer or other electronic device, you can use Linux.</p>
+
+<p>But Linux also is different from other operating systems in many important ways. First, and perhaps most importantly, Linux is open source software. The code used to create Linux is free and available to the public to view, edit, and—for users with the appropriate skills—to contribute to.</p>
+
+<p>Linux is also different in that, although the core pieces of the Linux operating system are generally common, there are many distributions of Linux, which include different software options. This means that Linux is incredibly customizable, because not just applications, such as word processors and web browsers, can be swapped out. Linux users also can choose core components, such as which system displays graphics, and other user-interface components
+<img src="http://localhost:4000/images/linux.png" width="600" /></p>
+
+<h1 id="prepare-and-store-the-data">Prepare and Store the data</h1>
+
+<p>We often forget how science and engineering function. Ideas come from previous
+exploration more often than from lightning strokes.
+										—John W. Tukey</p>
+
+<p>Just as a well-organized laboratory makes a scientist’s life easier, a well-organized andwell-documented project makes a bioinformatician’s life easier. Regardless of the particular project you’re working on, your project directory should be laid out in a consistent and understandable fashion. Clear project organization makes it easier for
+both you and collaborators to figure out exactly where and what everything is. Additionally, it’s much easier to automate tasks when files are organized and clearly
+named. For example, processing 300 gene sequences stored in separate FASTA files
+with a script is trivial if these files are organized in a single directory and are consistently named.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                       [explain my command ](https://explainshell.com/)
+</code></pre></div></div>
+
+<p>All files and directories used in your project should live in a single project directory
+with a clear name. During the course of a project, you’ll have amassed data files,
+notes, scripts, and so on if these were scattered all over your hard drive (or worse,
+across many computers’ hard drives), it would be a nightmare to keep track of every‐
+thing. Even worse, such a disordered project would later make your research nearly
+impossible to reproduce.
+In addition to having a well-organized directory structure, your bioinformatics
+project also should be well documented. Poor documentation can lead to irreproduci‐
+bility and serious errors.</p>
+<ul>
+  <li>Document your methods and workflows</li>
+  <li>Document the origin of all data in your project directory</li>
+  <li>Document when you downloaded data</li>
+  <li>Record data version information</li>
+  <li>Describe how you downloaded the data</li>
+  <li>Document the versions of the software that you ran
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ echo dog-{gone,bowl,bark}
+     dog-gone dog-bowl dog-bark
+</code></pre></div>    </div>
+    <p>Create Project</p>
+  </li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	$ mkdir Analisi_12march2018/{RAW,Scripts,quality}
+	$ tree Analisi_12march2018/
+			Analisi_12march2018/
+			├── quality
+			├── RAW
+			└── Scripts
+
+	$ls Analisi_12march2018/
+</code></pre></div></div>
+
+<p>The Unix shell is the foundational computing environment for bioinformatics. The
+shell serves as our interface to large bioinformatics programs, as an interactive con‐
+sole to inspect data and intermediate results, and as the infrastructure for our pipe‐
+lines and workflows. This chapter will help you develop a proficiency with the
+necessary Unix shell concepts used extensively throughout the rest of the book. This
+will allow you to focus on the content of commands in future chapters, rather than be
+preoccupied with understanding shell syntax.</p>
+
+<p>We learned the basics of the Unix shell: using streams, redirecting output, pipes, and working with processes. These core concepts not only allow us to use the shell to run command-line bioinformatics tools, but to leverage Unix as a modular work environment for working with bioinformatics data. In this chapter, we’ll see how we can combine the Unix shell with command-line data tools to explore and manipulate data quickly</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>pwd</td>
+      <td>tell you where you are</td>
+    </tr>
+    <tr>
+      <td>ls</td>
+      <td>list the content of the current directory</td>
+    </tr>
+    <tr>
+      <td>ls <directory></directory></td>
+      <td>list the content of a directory</td>
+    </tr>
+    <tr>
+      <td>cd <directory></directory></td>
+      <td>go to the specified directory</td>
+    </tr>
+    <tr>
+      <td>cd ~ (or cd)</td>
+      <td>go to your home directory</td>
+    </tr>
+    <tr>
+      <td>cd  ..</td>
+      <td>go to the parent directory</td>
+    </tr>
+    <tr>
+      <td>tree <directory></directory></td>
+      <td>list the content of a directory in a tree-like format</td>
+    </tr>
+    <tr>
+      <td>mkdir <directory></directory></td>
+      <td>create the specified directory 1.2. View the content of a file</td>
+    </tr>
+    <tr>
+      <td>less, more</td>
+      <td>view text with paging</td>
+    </tr>
+    <tr>
+      <td>head</td>
+      <td>Print first lines of a file</td>
+    </tr>
+    <tr>
+      <td>tail</td>
+      <td>print last lines of a file</td>
+    </tr>
+    <tr>
+      <td>cat</td>
+      <td>print the content of a file to the screen</td>
+    </tr>
+    <tr>
+      <td>zcat</td>
+      <td>print the content of a gzip compressed file to the screen 1.3. File manipulations</td>
+    </tr>
+    <tr>
+      <td>rm <file></file></td>
+      <td>remove file</td>
+    </tr>
+    <tr>
+      <td>cp <file1> <file2></file2></file1></td>
+      <td>copy file1 to file2</td>
+    </tr>
+    <tr>
+      <td>mv <file1> <file2></file2></file1></td>
+      <td>rename file1 to file2 1.4. Some other useful commands</td>
+    </tr>
+    <tr>
+      <td>find <folder>/ -type f</folder></td>
+      <td>recursively find all files in a specific folder</td>
+    </tr>
+    <tr>
+      <td>find . -name ‘<pattern>'</pattern></td>
+      <td>recursively find anything whose name contains <pattern> in the current folder (Single quotes must be used in order to avoid wildcard expansion by the shell)</pattern></td>
+    </tr>
+    <tr>
+      <td>grep <pattern></pattern></td>
+      <td>show lines of text containing a given pattern</td>
+    </tr>
+    <tr>
+      <td>grep -v <pattern></pattern></td>
+      <td>show lines of text not containing a given pattern</td>
+    </tr>
+    <tr>
+      <td>sort</td>
+      <td>sort lines of text files</td>
+    </tr>
+    <tr>
+      <td>wc</td>
+      <td>count words, lines and characters</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">&gt;</code> (output redirection)</td>
+      <td>allow to redirect the output to a file</td>
+    </tr>
+    <tr>
+      <td>pipe)</td>
+      <td>allow to send the output from one program to another</td>
+    </tr>
+    <tr>
+      <td>cut</td>
+      <td>extract selected portion of each line from one or more files</td>
+    </tr>
+    <tr>
+      <td>echo</td>
+      <td>input a line of text and display it on standard output</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="15-awk-programming">1.5. AWK programming</h1>
+
+<h2 id="awk---unix-shell-programming-language-a-fast-and-stable-tool-for-processing-text-files">AWK - UNIX shell programming language. A fast and stable tool for processing text files.</h2>
+
+<table>
+  <tbody>
+    <tr>
+      <td>awk '/www/ { print $0 }' <file></file></td>
+      <td>search for the pattern www in each line of the file</td>
+    </tr>
+    <tr>
+      <td>awk '$3==”www”' <file></file></td>
+      <td>search for the exact match of www in the third column of the file</td>
+    </tr>
+    <tr>
+      <td>awk 'length($0) &gt; 80' <file></file></td>
+      <td>print every line in the file that is longer than 80 characters</td>
+    </tr>
+    <tr>
+      <td>awk 'NR % 2 == 0' <file></file></td>
+      <td>print even-numbered lines of the file 1.5.1. Some built-in variables</td>
+    </tr>
+    <tr>
+      <td>NR</td>
+      <td>Number of records</td>
+    </tr>
+    <tr>
+      <td>NF</td>
+      <td>Number of fields</td>
+    </tr>
+    <tr>
+      <td>FS</td>
+      <td>Field separator character</td>
+    </tr>
+    <tr>
+      <td>OFS</td>
+      <td>Output field separator character</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>See www.grymoire.com/Unix/Awk.html and www.tutorialspoint.com/awk/awk_basic_examples.htm for more information</p>
+<ol>
+  <li>Writing and editing files
+2.1. GNU nano</li>
+</ol>
+
+<h1 id="try">TRY</h1>
+<p>Follow the first tutorial <a href="http://www.ee.surrey.ac.uk/Teaching/Unix/">TRY ME</a></p>
+<h1 id="command-lines">COMMAND LINES</h1>
+<p>USE HELP OF THE PROGRAMS AND DOCUMENTATION</p>
+
+<p><img src="http://localhost:4000/images/fastqc2.png" width="600" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  source activate NGSBASE
+  fastqc -h
+</code></pre></div></div>
+
+<hr />
+

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Bioinformatics approach examples &middot; Training Course on Next generation sequencing
+    
+  </title>
+
+  <!-- CSS -->
+    <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="/public/css/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="/js/toc.js"></script>
+</head>
+
+
+  <body class="theme-base-07">
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox" checked>
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>NGS training</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="http://localhost:4000/lectures/01.welcome/">Welcome and introduction</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="http://localhost:4000/lectures/02.setup_tutorial/">Enviroment installation</a>
+        
+      
+    
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="http://localhost:4000/lectures/05.quality_control/">Quality control & Adapter trimming</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item active" href="http://localhost:4000/lectures/06.bioinformatics_pipeline/">Bioinformatics approach examples</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="http://localhost:4000/lectures/07.rnaseq_pipeline/">RNA-Seq data analysis</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="http://localhost:4000/lectures/08.callvariant/">Call variants</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="http://localhost:4000/lectures/10.docker/">Everything in a box. Docker and Galaxy</a>
+        
+      
+    
+
+    <!--<a class="sidebar-nav-item" href="/archive/v2.0.zip">Download</a>-->
+    <a class="sidebar-nav-item" href="https://bioinfo-dirty-jobs.github.io/NGSBASE">GitHub project</a>
+    <span class="sidebar-nav-item">Currently v2.0</span>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2019. All rights reserved.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="http://localhost:4000/" title="Home">Training Course on Next generation sequencing</a>
+            <!--<p></p><small>Bioinformatics approach examples</small></p>-->
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="page">
+  <h1 class="page-title">Bioinformatics approach examples</h1>
+  <p class="note">We have many way to write our pipelines. Each approach have some problems. We need to use take in mind what we need to do.</p>
+  
+    <!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+
+});
+</script>
+
+<div id="toc"></div>
+
+  
+  <p><img src="http://localhost:4000/images/pipeline.jpg" alt="Pipeline" /></p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>In Unix-like computer operating systems, a pipeline is a sequence of processes chained together by their standard streams, so that the output of each process (stdout) feeds directly as input (stdin) to the next one.
+The concept of pipelines was championed by Douglas McIlroy at Unix’s ancestral home of Bell Labs, during the development of Unix, shaping its toolbox philosophy.[1][2] It is named by analogy to a physical pipeline.</p>
+
+<p>The standard shell syntax for pipelines is to list multiple commands, separated by vertical bars (“pipes” in common Unix verbiage). For example, to list files in the current directory (ls), retain only the lines of ls output containing the string “key” (grep), and view the result in a scrolling page (less), a user types the following into the command line of a terminal:</p>
+
+<p><code class="highlighter-rouge">ls -l | grep key | less</code></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>“ls -l” produces a process, the output (stdout) of which is piped to the input (stdin) of the process for “grep key”; and likewise for the process for “less”. Each process takes input from the previous process and produces output for the next process via standard streams. Each “</td>
+      <td>” tells the shell to connect the standard output of the command on the left to the standard input of the command on the right by an inter-process communication mechanism called an (anonymous) pipe, implemented in the operating system. Pipes are unidirectional; data flows through the pipeline from left to right.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="highlighter-rouge">process1 | process2 | process3</code></p>
+
+<p>In general a pipeline on bionformatics  refers to a prescribed set of processing steps needed to transfer form raw data into something interpretable. This could be for instance, a series of scripts or programs. This is an example of pipeeline for  germline calling process encode by GATK <a href="https://software.broadinstitute.org/gatk/best-practices/">GATK</a></p>
+
+<p><img src="http://localhost:4000/images/06.pipeline2.png" alt="Pipeline" /></p>
+
+<p>The GATK Best Practices provide step-by-step recommendations for performing variant discovery analysis in high-throughput sequencing (HTS) data. There are several different GATK Best Practices workflows tailored to particular applications depending on the type of variation of interest and the technology employed. The Best Practices documentation attempts to describe in detail the key principles of the processing and analysis steps required to go from raw reads coming off the sequencing machine, all the way to an appropriately filtered variant callset that can be used in downstream analyses. Wherever we can, we try to provide guidance regarding experimental design, quality control (QC) and pipeline implementation options, but please understand that those are dependent on many factors including sequencing technology and the hardware infrastructure that are at your disposal, so you may need to adapt our recommendations to your specific situation.</p>
+
+<h1 id="practical">PRACTICAL</h1>
+
+<p>High-throughput bioinformatic analyses increasingly rely on pipeline frameworks to process sequence and metadata. Modern implementations of these frameworks differ on three key dimensions: using an implicit or explicit syntax, using a configuration, convention or class-based design paradigm and offering a command line or workbench interface. Exist many framework for perform our analisys. Here we want to describe 4 methods for perform our analisys.</p>
+
+<h2 id="manual-bash">MANUAL BASH</h2>
+<p>In this way we write each step on command line and we wait the end for start the new command.
+Here we approach the alignment and all the steps need for prepare bam file.
+Please familiarize wih this commands:
+<img src="http://localhost:4000/images/samtools.png" />
+<img src="http://localhost:4000/images/bwa.png" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> cd ~/Desktop/
+  #download the data
+  git clone https://github.com/bioinfo-dirty-jobs/Data.git
+  # create directory for the execution of programs
+  mkdir ANALISI1
+  cd ANALISI1
+  cp -r ~/Desktop/Data/PIPELINES/*  .
+  #activate enviroment wih all the software previous installed
+  source activate NGSBASE
+</code></pre></div></div>
+
+<p>When you have finish this part we need to write the commands:</p>
+
+<h4 id="prepare--reference">Prepare  reference</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    samtools faidx reference/human_g1k_v37_MT.fasta 
+    picard CreateSequenceDictionary R=reference/human_g1k_v37_MT.fasta o=reference/human_g1k_v37_MT.dict
+    bwa index reference/human_g1k_v37_MT.fasta
+</code></pre></div></div>
+
+<h4 id="allign-the-sample">Allign the sample</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bwa mem -M -R '@RG\tID:ind1\tSM:ind1\tLB:ind1\tPU:ind1\tPL:Illumina' reference/human_g1k_v37_MT.fasta fastq/ind1_1.fastq.gz fastq/ind1_2.fastq.gz | samblaster -M | samtools fixmate - - | samtools sort -O bam -o bam/ind1.rmdup.sorted.bam -
+ bwa mem -M -R '@RG\tID:ind2\tSM:ind2\tLB:ind2\tPU:ind2\tPL:Illumina' reference/human_g1k_v37_MT.fasta fastq/ind2_1.fastq.gz fastq/ind2_2.fastq.gz | samblaster -M | samtools fixmate - - | samtools sort -O bam -o bam/ind2.rmdup.sorted.bam -
+</code></pre></div></div>
+
+<h4 id="prepare-statistics-file">Prepare statistics file</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>samtools index bam/ind2.rmdup.sorted.bam
+samtools stats bam/ind2.rmdup.sorted.bam | grep ^SN | cut -f 2- &gt; stats/ind2.rmdup.sorted.bam.stats
+samtools index bam/ind1.rmdup.sorted.bam
+samtools stats bam/ind1.rmdup.sorted.bam | grep ^SN | cut -f 2- &gt; stats/ind1.rmdup.sorted.bam.stats #### Joint call variant for both samples
+
+ freebayes -f reference/human_g1k_v37_MT.fasta bam/ind1.rmdup.sorted.bam bam/ind2.rmdup.sorted.bam &gt; vcf/joint.raw.vcf
+</code></pre></div></div>
+
+<p>Please be familiar with the input files we talk yesterday</p>
+
+<h2 id="script-bash">SCRIPT BASH</h2>
+
+<p>You can organize your single step in signle file that run all the  pipeline.
+This is what we do:
+<img src="http://localhost:4000/images/snakemake.png" alt="Pipeline we use" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> cat example.sh
+ sh example.sh
+</code></pre></div></div>
+
+<h2 id="run-using-snakemake">RUN USING SNAKEMAKE</h2>
+
+<p>You can run all the pipeline uing snakemake <a href="https://snakemake.readthedocs.io/en/stable/">link</a>.
+The Snakemake workflow management system is a tool to create reproducible and scalable data analyses. Workflows are described via a human readable, Python based language. They can be seamlessly scaled to server, cluster, grid and cloud environments, without the need to modify the workflow definition. Finally, Snakemake workflows can entail a description of required software, which will be automatically deployed to any execution environment.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   cat example_snakemake
+   snakemake -s example_snakefile
+</code></pre></div></div>
+
+<h2 id="run-using-nextflow">RUN USING NEXTFLOW</h2>
+
+<p>You can run all the pipeline uing nextflow <a href="https://www.nextflow.io/">link</a>.
+Nextflow enables scalable and reproducible scientific workflows using software containers. It allows the adaptation of pipelines written in the most common scripting languages. Its fluent DSL simplifies the implementation and the deployment of complex parallel and reactive workflows on clouds and clusters.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   cat Analisi.nf
+   nextflow run Analisi.nf
+</code></pre></div></div>
+
+<h1 id="reference">REFERENCE</h1>
+
+<p><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5429012/">reference framework</a>PMCID: PMC5429012</p>
+
+</div>
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  <!--<footer>
+        <p>This project is maintained by  Maurizio Polano<br/></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+
+-->
+  </body>
+</html>

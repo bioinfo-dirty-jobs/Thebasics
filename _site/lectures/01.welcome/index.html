@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Welcome and introduction &middot; Training Course on Next generation sequencing
+    
+  </title>
+
+  <!-- CSS -->
+    <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="/public/css/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="/js/toc.js"></script>
+</head>
+
+
+  <body class="theme-base-07">
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox" checked>
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>NGS training</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+    
+      
+        
+          <a class="sidebar-nav-item active" href="http://localhost:4000/lectures/01.welcome/">Welcome and introduction</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="http://localhost:4000/lectures/02.setup_tutorial/">Enviroment installation</a>
+        
+      
+    
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="http://localhost:4000/lectures/05.quality_control/">Quality control & Adapter trimming</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="http://localhost:4000/lectures/06.bioinformatics_pipeline/">Bioinformatics approach examples</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="http://localhost:4000/lectures/07.rnaseq_pipeline/">RNA-Seq data analysis</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="http://localhost:4000/lectures/08.callvariant/">Call variants</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="http://localhost:4000/lectures/10.docker/">Everything in a box. Docker and Galaxy</a>
+        
+      
+    
+
+    <!--<a class="sidebar-nav-item" href="/archive/v2.0.zip">Download</a>-->
+    <a class="sidebar-nav-item" href="https://bioinfo-dirty-jobs.github.io/NGSBASE">GitHub project</a>
+    <span class="sidebar-nav-item">Currently v2.0</span>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2019. All rights reserved.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="http://localhost:4000/" title="Home">Training Course on Next generation sequencing</a>
+            <!--<p></p><small>Welcome and introduction</small></p>-->
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="page">
+  <h1 class="page-title">Welcome and introduction</h1>
+  <p class="note">Agenda, resources and other useful information</p>
+  
+    <!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+
+});
+</script>
+
+<div id="toc"></div>
+
+  
+  <h2 id="welcome">Welcome!</h2>
+
+<p>Welcome to this introductory course about <em>NGS data analysis</em>. During this course you will learn the basics of NGS data analysis in a Linux environment, current used software and best practices will be explained.
+This course is focused in NGS data alignment for both DNA and RNA (RNA-seq), variant calling, differential expression analysis and data visualization.
+This is course is scheduled for a 2 days and assumes a very basic knowledge of NGS data analysis and Linux.
+All materials in this is course are free and open and derived from some pulic avaible online course.</p>
+
+<p><a href="https://www.dropbox.com/sh/4qkqch7gyt888h7/AABD_i9ShwryfAqGeJ0yqqF3a">DropBox folder</a></p>
+
+<p><a href="https://drive.google.com/open?id=1ywFJ9OyKn0Bo9AhxX2nUuKC3Fr4wLdL6">data</a>
+<a href="https://www.dropbox.com/s/ewlkswl9nd31xz9/RNA_all.tar.bzip2?dl=0">TUTORIAL RNA</a>
+<a href="">data2</a></p>
+
+<p>Here you can found and Interesting video that explain NGS sequincing</p>
+
+<h2><a href="https://www.youtube.com/watch?v=MvuYATh7Y74"><img src="https://www.youtube.com/watch?v=MvuYATh7Y74/0.jpg" alt="Sequencing" /></a></h2>
+<h3 id="learning-outcomes">Learning outcomes</h3>
+
+<p>After this course you should be able to:</p>
+
+<ul>
+  <li>Start to move on linux system</li>
+  <li>Know the precincipal formats  use on  NGS</li>
+  <li>Evaluate quality and clean fastq</li>
+  <li>Map and visualize some alignment</li>
+  <li>Know some base of analisys</li>
+</ul>
+
+<p>and you will be exposed to these software:</p>
+
+<ul>
+  <li><a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/">FASTC</a></li>
+  <li><a href="http://www.htslib.org/doc/samtools.html">SAMTOOLS</a></li>
+  <li><a href="http://bedtools.readthedocs.io/en/latest/">bedtools</a></li>
+  <li><a href="http://bio-bwa.sourceforge.net/">bwa</a></li>
+  <li><a href="http://bowtie-bio.sourceforge.net/bowtie2/index.shtml">bowtie2</a></li>
+  <li><a href="http://multiqc.info/">multiQC</a></li>
+  <li><a href="https://github.com/alexdobin/STAR">STAR</a></li>
+  <li><a href="https://genome.sph.umich.edu/wiki/Vt">vt</a></li>
+  <li><a href="https://github.com/ekg/freebayes">freebays</a></li>
+  <li><a href="https://software.broadinstitute.org/gatk/">GATK</a></li>
+  <li><a href="https://www.nextflow.io/">NEXTFLOW</a></li>
+  <li><a href="https://pachterlab.github.io/kallisto/about">KALLISTO</a></li>
+  <li><a href="https://github.com/pachterlab/sleuth">SLEUTH</a></li>
+  <li><a href="https://broadinstitute.github.io/picard/">picards</a></li>
+</ul>
+
+<p>NGS data can be big, very big, huge! Biology is now a Big Data science
+There are not many web-based or graphical applications to perform analysis yet, sorry.
+Most tools developed to work on Linux, many command line programs
+How to work in NGS?</p>
+<ul>
+  <li>Small datasets (&lt;1TB): workstations</li>
+  <li>Medium sized datasets (&lt;100TB): clusters</li>
+  <li>Big datasets (100TB-20PB): big clusters and/or cloud based solutions</li>
+</ul>
+
+<p>Exercises during this course the NGS alignment will be done using the human chromosome 21 or MT as a reference genome. By doing this we can speed up exercises and avoid using too much memory. Under real circumstances, when using the standard reference genome, all the commands are exactly the same
+Software has been already installed to save time, so you are not expected to download and install all the software it is going to be used. However, it’s usually good to learn the basics of software installation in Linux, there is an optional session at the end of the first day for those that want to learn how to install NGS software in a standard Linux. We use conda for install most of the tools.</p>
+
+<p><img src="http://localhost:4000/images/p3.jpeg" width="600" /></p>
+
+<hr />
+<h3 id="we-assume-you-are-familiar-with">We assume you are familiar with:</h3>
+
+<ul>
+  <li>Next generation sequencing in general</li>
+  <li>Be patient</li>
+  <li>Please see this video <a href="https://www.youtube.com/watch?v=MvuYATh7Y74">How to sequence the human genome - Mark J. Kiel</a></li>
+</ul>
+
+<p><img src="http://localhost:4000/images/patience.jpg" width="600" /></p>
+
+<hr />
+<h1 id="agenda">Agenda</h1>
+
+<p><strong>12 march 2018</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Lecture/Practical</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Introduction &amp; overview of NGS (RNA and DNA sequencing)</strong></td>
+      <td>Lecture</td>
+    </tr>
+    <tr>
+      <td><strong>Introduction to Linux and R and command line interface</strong></td>
+      <td>Lecture / Practical</td>
+    </tr>
+    <tr>
+      <td><strong>NGS data format</strong></td>
+      <td>Lecture / Practical</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>13 march 2018</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Lecture/Practical</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Bioinformatics approach (galaxy nextflow,and Ad hoc scripting)</strong></td>
+      <td>Lecture /Practical</td>
+    </tr>
+    <tr>
+      <td><strong>RNASeq Analysis Workflow and planning (Quality Control, Alignment, Gene expression quantification, Differential expression analysis)</strong></td>
+      <td>Lecture /Practical</td>
+    </tr>
+    <tr>
+      <td><strong>Exome and target sequencing workflow (alignment, SNP calling)</strong></td>
+      <td>Practical</td>
+    </tr>
+    <tr>
+      <td><strong>ChIPSeq workflow</strong></td>
+      <td>Lecture</td>
+    </tr>
+  </tbody>
+</table>
+
+
+</div>
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  <!--<footer>
+        <p>This project is maintained by  Maurizio Polano<br/></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+
+-->
+  </body>
+</html>

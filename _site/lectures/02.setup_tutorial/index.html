@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Enviroment installation &middot; Training Course on Next generation sequencing
+    
+  </title>
+
+  <!-- CSS -->
+    <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="/public/css/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="/js/toc.js"></script>
+</head>
+
+
+  <body class="theme-base-07">
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox" checked>
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>NGS training</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="http://localhost:4000/lectures/01.welcome/">Welcome and introduction</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item active" href="http://localhost:4000/lectures/02.setup_tutorial/">Enviroment installation</a>
+        
+      
+    
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="http://localhost:4000/lectures/05.quality_control/">Quality control & Adapter trimming</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="http://localhost:4000/lectures/06.bioinformatics_pipeline/">Bioinformatics approach examples</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="http://localhost:4000/lectures/07.rnaseq_pipeline/">RNA-Seq data analysis</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="http://localhost:4000/lectures/08.callvariant/">Call variants</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="http://localhost:4000/lectures/10.docker/">Everything in a box. Docker and Galaxy</a>
+        
+      
+    
+
+    <!--<a class="sidebar-nav-item" href="/archive/v2.0.zip">Download</a>-->
+    <a class="sidebar-nav-item" href="https://bioinfo-dirty-jobs.github.io/NGSBASE">GitHub project</a>
+    <span class="sidebar-nav-item">Currently v2.0</span>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2019. All rights reserved.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="http://localhost:4000/" title="Home">Training Course on Next generation sequencing</a>
+            <!--<p></p><small>Enviroment installation</small></p>-->
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="page">
+  <h1 class="page-title">Enviroment installation</h1>
+  <p class="note">Command line preparation enviroment for our tutorial.</p>
+  
+    <!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+
+});
+</script>
+
+<div id="toc"></div>
+
+  
+  <h1 id="general-installation-configuration-our-machines">General installation configuration our machines</h1>
+<hr />
+<h2 id="introduction">INTRODUCTION</h2>
+<p>All the softwares are already installed on your virtual machine. If you need assistance please let  me know.
+You can install in your PC follow this tutorial</p>
+
+<h4 id="setting-up-anaconda">Setting up Anaconda</h4>
+<p>Anaconda is an environment and package manager for Python and it makes installation, environment management, etc. simple without requiring root or administrator privileges.  Fortunately, its framework has been leveraged for a project called bioconda that extends these capabailities to external programs as well.  All of the packages and programs we’re using today can easily be installed with Anaconda/bioconda with the following steps:</p>
+
+<ul>
+  <li>
+    <p>First, install Miniconda version 3.5 <a href="http://conda.pydata.org/miniconda.html">available here</a>.  During installation, be sure to allow miniconda to append to your .bashrc or .bash_profile (this will add it and all programs it installs to your PATH).  If installation goes well, the command <code class="highlighter-rouge">which python</code> should result in something like <code class="highlighter-rouge">/Users/&lt;yourusername&gt;/anaconda/bin/python</code> or <code class="highlighter-rouge">/home/&lt;yourusername&gt;/anaconda/bin/python</code></p>
+  </li>
+  <li>Add bioconda channels to conda with the following commands:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  conda config --add channels r
+  conda config --add channels conda-forge
+  conda config --add channels bioconda
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Create the environment we’ll be working in and install required packages with the command:</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      conda create --name NGSBASE python=3.6 snakemake fastqc bwa samtools picard freebayes bcftools snpsift
+</code></pre></div>    </div>
+    <p>or</p>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   git clone https://github.com/bioinfo-dirty-jobs/Data
+   cd Data
+   conda env create -f ngsbase.yml
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Load the new environment and add the samblaster package</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  source activate NGSBASE
+  conda install -c biobuilds samblaster
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>This will create a working environment called NGSBASE containing python 3.6 (python 3 is required for snakemake) and all of the tools listed in the command.  You can see the full list of programs available through bioconda <a href="https://bioconda.github.io/">listed here</a> and the full list of python packages available through Anaconda <a href="https://docs.continuum.io/anaconda/pkg-docs">listed here</a>.</p>
+
+<p>If you want to load our new environment, you can do so with the command:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    source activate NGSBASE
+</code></pre></div></div>
+<p>and leave the environment with the command:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    source deactivate
+    
+</code></pre></div></div>
+
+<p>If you’re in your environment, you can easily add additional programs (like we did for multiqc) and packages with the command:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    conda install &lt;program/package name&gt;
+</code></pre></div></div>
+
+<p>For example, if we also want to take a look at Bowtie2, another read mapper (we’ll use bwa today), we can easily add it by entering our environment
+				<code class="highlighter-rouge">  source activate NGSBASE</code>
+and typing 
+				<code class="highlighter-rouge">conda install bowtie2</code></p>
+
+<h2 id="vmware">VMWARE</h2>
+<p>Please install <a href="https://www.vmware.com/products/workstation-player.html">VMWARE PLAYER</a>
+Run the machine and modify the configurations for you PC.</p>
+
+<hr />
+
+
+</div>
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  <!--<footer>
+        <p>This project is maintained by  Maurizio Polano<br/></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+
+-->
+  </body>
+</html>

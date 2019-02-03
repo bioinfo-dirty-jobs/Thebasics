@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      RNA-Seq data analysis &middot; Training Course on Next generation sequencing
+    
+  </title>
+
+  <!-- CSS -->
+    <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="/public/css/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="/js/toc.js"></script>
+</head>
+
+
+  <body class="theme-base-07">
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox" checked>
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>NGS training</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="http://localhost:4000/lectures/01.welcome/">Welcome and introduction</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="http://localhost:4000/lectures/02.setup_tutorial/">Enviroment installation</a>
+        
+      
+    
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="http://localhost:4000/lectures/05.quality_control/">Quality control & Adapter trimming</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="http://localhost:4000/lectures/06.bioinformatics_pipeline/">Bioinformatics approach examples</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item active" href="http://localhost:4000/lectures/07.rnaseq_pipeline/">RNA-Seq data analysis</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="http://localhost:4000/lectures/08.callvariant/">Call variants</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="http://localhost:4000/lectures/10.docker/">Everything in a box. Docker and Galaxy</a>
+        
+      
+    
+
+    <!--<a class="sidebar-nav-item" href="/archive/v2.0.zip">Download</a>-->
+    <a class="sidebar-nav-item" href="https://bioinfo-dirty-jobs.github.io/NGSBASE">GitHub project</a>
+    <span class="sidebar-nav-item">Currently v2.0</span>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2019. All rights reserved.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="http://localhost:4000/" title="Home">Training Course on Next generation sequencing</a>
+            <!--<p></p><small>RNA-Seq data analysis</small></p>-->
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="page">
+  <h1 class="page-title">RNA-Seq data analysis</h1>
+  <p class="note">RNA-seq data analyss with different approachs.</p>
+  
+    <!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+
+});
+</script>
+
+<div id="toc"></div>
+
+  
+  <p><img src="http://localhost:4000/images/pipeline.jpg" alt="Pipeline" /></p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>RNA-Seq (RNA sequencing ) also called whole transcriptome sequncing  use next-generation sequeincing (NGS)  to reveal the presence and quantity of RNA in a biolgical sample at a given moment.</p>
+
+<h2 id="practical-1">Practical 1</h2>
+
+<p>In this session we want to perform some differential expressin from two condition as example (Normal vs tumor RNA-seq). This data use for this tutorial are pubblicaly avaible.</p>
+
+<p><img src="http://localhost:4000/images/RNA.png" /></p>
+
+<p>Please dwnlad the material here:
+   <a href="https://drive.google.com/open?id=1J83O3PhphrskU1Aytke3L7TCIyRm4phQ">For count</a>
+   <a href="https://drive.google.com/file/d/1ywFJ9OyKn0Bo9AhxX2nUuKC3Fr4wLdL6/view?usp=sharing">Pipeline TEST </a>
+Please follow this  command</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd ~/Desktop/
+tar xvf TUTORIAL_RNA_snakemake.tar.gz
+cd TUTORIAL
+conda env create -f snakemake_differential.yml
+</code></pre></div></div>
+
+<p>Please launch the analysis:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>snakemake -s Snakefile.Kallisto --configfile database3.yml --use-conda
+</code></pre></div></div>
+
+<p>Please Conect and see this tutorial on live sleuth</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[youtube](https://www.youtube.com/watch?v=KEn0CMYk6Wo)
+</code></pre></div></div>
+
+<h2 id="practical-counts-data">PRACTICAL COUNTS DATA</h2>
+
+<p>In the previous example we use the new way to do RNA-seq analisys using pseudoma
+p approach. This method are recently reported (Kallisto and Salmon).
+Another way to do this type analisys  was performed using  counts. Normally you
+can allign with programs like STAR and count gene and isoforms using HTseq-count
+ or feature-count.
+Here we are some examples of working on R oon Counts.</p>
+
+<p><img src="http://localhost:4000/images/featurecount.png" />
+<img src="http://localhost:4000/images/htseq_count.png" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   	conda create -n DESEQ
+   	source activate DESEQ
+    	conda install -y r-mixomics  bioconductor-htsfilter bioconductor-deseq2
+   	R
+	library(DESeq2)
+	library(RColorBrewer)
+	library(mixOmics)
+	library(HTSFilter) 
+	
+directory &lt;- "RNAseq_data/count_table_files/"
+dir(directory)
+
+*Exercise 3.1* Read the files:
+
+rawCountTable &lt;- read.table(paste0(directory,"count_table.tsv"), header=TRUE,
+                            row.names=1)
+sampleInfo &lt;- read.table(paste0(directory,"pasilla_design.txt"), header=TRUE,
+                         row.names=1)
+
+*Exercise 3.2* Have a look at the count data:
+head(rawCountTable)
+nrow(rawCountTable)
+
+*Exercise 3.3* Have a look at the sample information and order the count table
+in the same way that the sample information:
+sampleInfo
+rawCountTable &lt;- rawCountTable[,match(rownames(sampleInfo),
+                                      colnames(rawCountTable))]
+head(rawCountTable)
+
+*Exercise 3.4* Create the 'condition' column
+sampleInfo$condition &lt;- substr(rownames(sampleInfo), 1,
+                               nchar(rownames(sampleInfo))-1)
+sampleInfo$condition[sampleInfo$condition=="untreated"] &lt;- "control"
+sampleInfo$condition &lt;- factor(sampleInfo$condition)
+sampleInfo
+
+*Exercise 3.5* Create a 'DESeqDataSet' object
+ddsFull &lt;- DESeqDataSetFromMatrix(as.matrix(rawCountTable), sampleInfo,
+                                  formula(~condition))
+ddsFull
+
+# 3.2. Starting from separate files
+
+*Exercise 3.6* List all files in directory
+
+directory &lt;- "RNAseq_data/separate_files/"
+sampleFiles &lt;- list.files(directory)
+sampleFiles
+
+*Exercise 3.7* Create an object with file informations
+
+keptFiles &lt;- sampleFiles[-1]
+sampleName &lt;- sapply(keptFiles, function(afile)
+  substr(afile, 1, nchar(afile)-6))
+condition&lt;- sapply(keptFiles, function(afile) 
+  substr(afile, 1, nchar(afile)-7))
+fileInfo &lt;- data.frame(sampleName = sampleName, sampleFiles = keptFiles,
+                       condition = condition)
+rownames(fileInfo) &lt;- NULL
+fileInfo
+
+*Exercise 3.8* Construct a 'DESeqDataSet' object
+
+ddsHTSeq &lt;- DESeqDataSetFromHTSeqCount(fileInfo, directory, formula(~condition))
+ddsHTSeq
+
+# 3.3. Preparing the data object for the analysis of interest
+
+*Exercise 3.9* Select the subset of paire-end samples
+dds &lt;- subset(ddsFull, select=colData(ddsFull)$type=="paired-end")
+dds
+colData(dds)
+
+# 3.4 Data exploration and quality assessment
+
+*Exercise 3.10* Extract pseudo-counts (*ie* $\log_2(K+1)$) 
+pseudoCounts &lt;- log2(counts(dds)+1)
+head(pseudoCounts)
+*Exercise 3.11* Histogram for pseudo-counts (sample ```treated2```)
+```{r histoPseudoCounts}
+hist(pseudoCounts[,"treated2"])
+
+*Exercise 3.12* Boxplot for pseudo-counts
+boxplot(pseudoCounts, col="gray")
+
+*Exercise 3.13* MA-plots between control or treated samples
+par(mfrow=c(1,2))
+## treated2 vs treated3
+# A values
+avalues &lt;- (pseudoCounts[,1] + pseudoCounts[,2])/2
+# M values
+mvalues &lt;- (pseudoCounts[,1] - pseudoCounts[,2])
+plot(avalues, mvalues, xlab="A", ylab="M", pch=19, main="treated")
+abline(h=0, col="red")
+## untreated3 vs untreated4
+# A values
+avalues &lt;- (pseudoCounts[,3] + pseudoCounts[,4])/2
+# M values
+mvalues &lt;- (pseudoCounts[,3] - pseudoCounts[,4])
+plot(avalues, mvalues, xlab="A", ylab="M", pch=19, main="control")
+abline(h=0, col="red")
+
+*Exercise 3.14* PCA for pseudo-counts
+vsd &lt;- varianceStabilizingTransformation(dds)
+vsd
+plotPCA(vsd)
+
+*Exercise 3.15* heatmap for pseudo-counts (using ```mixOmics``` package)
+sampleDists &lt;- as.matrix(dist(t(pseudoCounts)))
+sampleDists
+cimColor &lt;- colorRampPalette(rev(brewer.pal(9, "Blues")))(16)
+cim(sampleDists, col=cimColor, symkey=FALSE)
+
+# 3.5. Differential expression analysis
+
+*Exercise 3.16* Run the DESeq2 analysis
+dds &lt;- DESeq(dds)
+dds
+
+# 3.6. Inspecting the results
+
+*Exercise 3.17* Extract the results
+res &lt;- results(dds)
+res
+
+*Exercise 3.18* Obtain information on the meaning of the columns
+mcols(res)
+
+*Exercise 3.19* Count the number of significant genes at level 1%
+sum(res$padj &lt; 0.01, na.rm=TRUE)
+
+*Exercise 3.20* Extract significant genes and sort them by the strongest down
+regulation
+sigDownReg &lt;- res[!is.na(res$padj), ]
+sigDownReg &lt;- sigDownReg[sigDownReg$padj &lt; 0.01, ]
+sigDownReg &lt;- sigDownReg[order(sigDownReg$log2FoldChange),]
+sigDownReg
+
+*Exercise 3.21* Extract significant genes and sort them by the strongest up
+regulation
+sigUpReg &lt;- res[!is.na(res$padj), ]
+sigUpReg &lt;- sigUpReg[sigUpReg$padj &lt; 0.01, ]
+sigUpReg &lt;- sigUpReg[order(sigUpReg$log2FoldChange, decreasing=TRUE),]
+*Exercise 3.22* Create permanent storage of results
+write.csv(sigDownReg, file="sigDownReg-deseq.csv")
+write.csv(sigUpReg, file="sigUpReg-deseq.csv")
+
+# 3.7 Diagnostic plot for multiple testing
+
+*Exercise 3.23* Plot a histogram of unadjusted p-values after filtering
+hist(res$pvalue, breaks=50)
+
+# 3.8 Interpreting the DE analysis results
+
+*Exercise 3.24* Create a MA plot showing differentially expressed genes
+plotMA(res, alpha=0.01)
+
+*Exercise 3.25* Create a Volcano plot
+volcanoData &lt;- cbind(res$log2FoldChange, -log10(res$padj))
+volcanoData &lt;- na.omit(volcanoData)
+colnames(volcanoData) &lt;- c("logFC", "negLogPval")
+head(volcanoData)
+plot(volcanoData, pch=19, cex=0.5)
+
+*Exercise 3.26* Transform the normalized counts for variance stabilization
+vsnd &lt;- varianceStabilizingTransformation(dds, blind=FALSE)
+vsnd
+
+*Exercise 3.27* Extract the transformed data
+head(assay(vsnd), 10)
+selY &lt;- assay(vsnd)[!is.na(res$pval), ]
+selY &lt;- selY[res$pval[!is.na(res$pval)] &lt; 0.01,]
+cimColor &lt;- colorRampPalette(rev(brewer.pal(9, "Blues")))(255)[255:1]
+cim(t(selY), col=cimColor, symkey=FALSE)
+</code></pre></div></div>
+
+<h2 id="kallisto-pipeline-using-nextflow">KALLISTO PIPELINE USING NEXTFLOW</h2>
+
+<p>Here antoher way to do the  analysis. Please familiarize with the results</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  cd  /home/bioinfo2/Data/kallisto-nf 
+  sudo nextflow run cbcrg/kallisto-nf -with-docker
+</code></pre></div></div>
+
+<h2 id="optional-pratical">OPTIONAL PRATICAL</h2>
+
+<p>Please follow this tutorial [link] (http://www.nathalievilla.org/doc/html/solution_edgeR-tomato.html#where-to-start-installation-and-alike) Pratical rnaseq data using tomato data</p>
+
+
+</div>
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  <!--<footer>
+        <p>This project is maintained by  Maurizio Polano<br/></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+
+-->
+  </body>
+</html>
